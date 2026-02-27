@@ -1,0 +1,17 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.pytest_cache/
+
+# R
+*.Rhistory
+*.RData
+*.Rproj.user
+.Rcheck/
+*.tar.gz
+
+# Build artifacts
+/doc/
+/Meta/

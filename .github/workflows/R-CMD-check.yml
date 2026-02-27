@@ -1,0 +1,31 @@
+name: R CMD check + Python tests
+
+on:
+  push:
+    branches: [main, master]
+  pull_request:
+    branches: [main, master]
+
+permissions:
+  contents: read
+  packages: write
+
+jobs:
+  build-and-test:
+    uses: GWMcElfresh/dockerDependencies/.github/workflows/docker-cache.yml@main
+    with:
+      dockerfile-path: "."
+      context: "."
+      dependency-files: "requirements.txt .bioc_version"
+      runtime-image-name: "cvae-pyro:test"
+      r-version: ""
+      bioc-version: ""
+      python-version: "3.11"
+      push-images: true
+      push-runtime: false
+      # Run both R CMD check and Python pytest inside the container
+      test-command: >
+        Rscript -e "devtools::install('.', dependencies = FALSE, upgrade = 'never')" &&
+        R CMD check --no-manual --no-vignettes --as-cran . &&
+        python3 -m pytest tests/python/ -v --tb=short
+    secrets: inherit
