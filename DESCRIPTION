@@ -1,0 +1,22 @@
+Package: cVAEPyro
+Title: Conditional Variational Autoencoder via Pyro for Seurat Data
+Version: 0.1.0
+Authors@R: c(
+    person("GWMcElfresh", role = c("aut", "cre"), email = "placeholder@example.com"))
+Description: Wraps Pyro's conditional variational autoencoder (cVAE) framework
+    for use with Seurat single-cell data objects. Provides functions to extract
+    gene expression and metadata, train cVAE models via Python, plot diagnostics,
+    and perform counterfactual forward-pass predictions.
+License: MIT + file LICENSE
+Encoding: UTF-8
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.3.2
+Imports:
+    Matrix,
+    ggplot2,
+    methods,
+    jsonlite
+Suggests:
+    Seurat,
+    testthat (>= 3.0.0)
+Config/testthat/edition: 3
